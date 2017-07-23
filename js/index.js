@@ -9,10 +9,10 @@ for (var i = 0; i < menuList.length; i++) {
 		
 		var hasMoved = parseFloat(window.getComputedStyle(that).top);
 		that.timer.goUp = setInterval(function() {
-			if (hasMoved < 150) {
-				hasMoved += 4;
+			if (hasMoved > -150) {
+				hasMoved -= 5;
 			}
-			that.style.top = '-' + hasMoved + 'px';
+			that.style.top = hasMoved + 'px';
 		}, 1000/60);
 	}, false);
 	menuList[i].addEventListener('mouseleave', function() {
@@ -21,9 +21,7 @@ for (var i = 0; i < menuList.length; i++) {
 		clearInterval(that.timer.goUp);
 		that.timer.goDown = setInterval(function(){ 
 			if (hasMoved < 0) {
-				hasMoved += 4;
-			}else {
-				clearInterval(timer.goDown);
+				hasMoved += 5;
 			}
 			that.style.top = hasMoved + 'px';
 		}, 1000/60);
